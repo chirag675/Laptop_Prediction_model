@@ -1,38 +1,38 @@
-# Laptop_Prediction_model
+# 💻 Laptop Price Predictor
 
-# 💻 Laptop Price Predictor (ML Project)
-
-An end-to-end Machine Learning project that predicts the price of a laptop based on its specifications like RAM, CPU, GPU, storage, etc.
+An end-to-end Machine Learning project that predicts laptop prices based on various hardware and software specifications. The project includes data preprocessing, feature engineering, model building, and deployment-ready artifacts.
 
 ---
 
 ## 🚀 Project Overview
 
-This project uses regression techniques to estimate laptop prices. It includes:
+This project builds a regression model to estimate laptop prices using features such as RAM, CPU, GPU, storage, and display characteristics.
 
-- Data preprocessing & feature engineering  
-- Model building using multiple algorithms  
-- Performance evaluation  
-- Deployment using Streamlit  
+The workflow includes:
+- Data cleaning and preprocessing
+- Feature engineering (PPI, CPU/GPU extraction)
+- Model training and evaluation
+- Pipeline creation for deployment
+- Model serialization using Pickle
 
 ---
 
 ## 📂 Dataset
 
-- Contains ~1300 laptop records  
-- Features include:
-  - Company
-  - TypeName
-  - RAM
-  - Weight
-  - Touchscreen
-  - IPS Display
-  - Screen Resolution
-  - CPU
-  - GPU
-  - Storage (HDD/SSD)
-  - Operating System
-  - Price  
+The dataset contains laptop specifications with the following features:
+
+- Company  
+- TypeName  
+- RAM  
+- Weight  
+- Touchscreen  
+- IPS Display  
+- Screen Resolution  
+- CPU  
+- GPU  
+- HDD & SSD  
+- Operating System  
+- Price  
 
 ---
 
@@ -42,6 +42,7 @@ This project uses regression techniques to estimate laptop prices. It includes:
 - Pandas, NumPy  
 - Matplotlib, Seaborn  
 - Scikit-learn  
+- XGBoost  
 - Streamlit  
 - Pickle  
 
@@ -49,33 +50,53 @@ This project uses regression techniques to estimate laptop prices. It includes:
 
 ## 🔍 Feature Engineering
 
-- Converted RAM & Weight to numeric values  
+Key transformations performed:
+
+- Converted RAM from string to integer  
+- Converted Weight to float  
 - Extracted:
-  - CPU brand  
-  - GPU brand  
+  - **CPU brand**
+  - **GPU brand**
 - Created new feature:
-  - **PPI (Pixels Per Inch)**  
-- Split storage into SSD & HDD  
+  - **PPI (Pixels Per Inch)** from resolution & screen size  
+- Split storage into:
+  - HDD
+  - SSD  
+- Encoded categorical variables using preprocessing pipeline  
 
 ---
 
 ## 🤖 Models Used
 
+The following regression models were trained and compared:
+
 - Linear Regression  
 - Decision Tree  
-- Random Forest (Best Performance)  
+- Random Forest  
+- **XGBoost (High Performance Boosting Model 🚀)**  
+
+👉 XGBoost improved performance due to:
+- Handling non-linear relationships effectively  
+- Built-in regularization  
+- Better generalization compared to basic models  
 
 ---
 
 ## 📊 Model Evaluation
 
+Evaluation metrics used:
+
 - R² Score  
-- MAE (Mean Absolute Error)  
-- RMSE  
+- Mean Absolute Error (MAE)  
+- Root Mean Squared Error (RMSE)  
+
+The final model was selected based on best performance across these metrics.
 
 ---
 
 ## 💾 Model Saving
+
+The trained pipeline and dataset are saved using pickle:
 
 ```python
 pickle.dump(pipe, open('pipe.pkl','wb'))
